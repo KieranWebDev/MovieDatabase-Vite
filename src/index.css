@@ -36,13 +36,14 @@ span {
   max-width: 600px;
   margin: 0 auto;
   background-color: white;
+  margin-top: 50px;
 }
 
 /* header  */
 header {
   height: 200px;
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url('./imagesAndIcons/header-background.png');
+    url('./assets/imagesAndIcons/header-background.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
