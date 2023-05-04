@@ -8,11 +8,13 @@ export default function MovieCard({ movie, setWatchList, watchList }) {
 
   function addToWatchList() {
     setIsOnWatchList(!isOnWatchList);
+    movie.watchList = true;
     setWatchList([movie, ...watchList]);
     console.log(watchList);
   }
   function removeFromWatchList() {
     setIsOnWatchList(!isOnWatchList);
+    movie.watchList = false;
     setWatchList(watchList.filter((item) => item.Title !== movie.Title));
     console.log(watchList);
   }
