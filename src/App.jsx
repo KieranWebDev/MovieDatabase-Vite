@@ -6,12 +6,13 @@ import { useEffect, useState } from 'react';
 
 function App() {
   const [dataToDisplay, setDataToDisplay] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const apiKey = '10594f76';
     async function getGeneralFilmInfo() {
       const response = await fetch(
-        `http://www.omdbapi.com/?apikey=${apiKey}&s=star wars&type=movie`
+        `http://www.omdbapi.com/?apikey=${apiKey}&s=${searchQuery}&type=movie`
       );
       const data = await response.json();
       const imdbIDarray = data.Search.map((movie) => movie.imdbID);
@@ -46,12 +47,20 @@ function App() {
       setDataToDisplay(neededMovieData);
     }
     getDetailedFilmInfo();
-  }, []);
+  }, [searchQuery]);
 
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home dataToDisplay={dataToDisplay} />} />
+        <Route
+          path="/"
+          element={
+            <Home
+              dataToDisplay={dataToDisplay}
+              setSearchQuery={setSearchQuery}
+            />
+          }
+        />
         <Route path="watchList" element={<WatchList />} />
       </Routes>
     </>

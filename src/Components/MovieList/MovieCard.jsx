@@ -1,13 +1,6 @@
+/* eslint-disable react/prop-types */
 import addIcon from '../../assets/imagesAndIcons/add-icon.png';
 import subtractIcon from '../../assets/imagesAndIcons/subtract-icon.png';
-
-// Genre,
-// Plot,
-// Poster,
-// Runtime,
-// Title,
-// imdbID,
-// imdbRating,
 
 export default function MovieCard({ movie }) {
   console.log(movie);

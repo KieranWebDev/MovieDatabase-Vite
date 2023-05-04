@@ -75,9 +75,9 @@ header a:hover {
 /* MAIN SECTION - search-results */
 /* search-bar */
 .search-bar {
-  position: absolute;
-  top: -50px;
-
+  /* position: absolute;
+  top: -50px; */
+  margin-top: -20px;
   width: 100%;
 }
 form {
