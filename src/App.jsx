@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 function App() {
   const [dataToDisplay, setDataToDisplay] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [watchList, setWatchList] = useState([]);
 
   useEffect(() => {
     const apiKey = '10594f76';
@@ -39,7 +40,7 @@ function App() {
             Plot,
             Poster,
             imdbID,
-            wishList: false,
+            watchList: false,
           };
           return dataToDisplay;
         })
@@ -58,10 +59,12 @@ function App() {
             <Home
               dataToDisplay={dataToDisplay}
               setSearchQuery={setSearchQuery}
+              setWatchList={setWatchList}
+              watchList={watchList}
             />
           }
         />
-        <Route path="watchList" element={<WatchList />} />
+        <Route path="watchList" element={<WatchList watchList={watchList} />} />
       </Routes>
     </>
   );

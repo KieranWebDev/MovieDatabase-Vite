@@ -1,9 +1,22 @@
 /* eslint-disable react/prop-types */
 import addIcon from '../../assets/imagesAndIcons/add-icon.png';
 import subtractIcon from '../../assets/imagesAndIcons/subtract-icon.png';
+import { useState } from 'react';
 
-export default function MovieCard({ movie }) {
-  console.log(movie);
+export default function MovieCard({ movie, setWatchList, watchList }) {
+  const [isOnWatchList, setIsOnWatchList] = useState(movie.watchList);
+
+  function addToWatchList() {
+    setIsOnWatchList(!isOnWatchList);
+    setWatchList([...watchList, movie]);
+    console.log(watchList);
+  }
+  function removeFromWatchList() {
+    setIsOnWatchList(!isOnWatchList);
+    setWatchList(watchList.filter((item) => item.Title !== movie.Title));
+    console.log(watchList);
+  }
+
   return (
     <div className="movie-card">
       <div className="movie-poster">
@@ -17,17 +30,22 @@ export default function MovieCard({ movie }) {
         <div className="movie-info">
           <span>{movie.Runtime}</span>
           <span>{movie.Genre}</span>
-          <button id="add-to-watchlist" className="add-to-watchlist">
-            <img src={addIcon} alt="add-icon" />
-            Watchlist
-          </button>
-          <button
-            id="remove-from-watchlist"
-            className="remove-from-watchlist hidden"
-          >
-            <img src={subtractIcon} alt="add-icon" />
-            Watchlist
-          </button>
+          {!isOnWatchList && (
+            <button onClick={addToWatchList} className="add-to-watchlist">
+              <img src={addIcon} alt="add-icon" />
+              Watch list
+            </button>
+          )}
+          {isOnWatchList && (
+            <button
+              onClick={removeFromWatchList}
+              id="remove-from-watchlist"
+              className="remove-from-watchlist"
+            >
+              <img src={subtractIcon} alt="add-icon" />
+              Remove
+            </button>
+          )}
         </div>
         <p>{movie.Plot}</p>
       </div>
