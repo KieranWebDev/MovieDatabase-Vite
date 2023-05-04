@@ -5,8 +5,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 
 function App() {
-  const [dataToDisplay, setDataToDisplay] = useState({});
-  // const [imdbIDarray, setImdbIDarray] = useState({});
+  const [dataToDisplay, setDataToDisplay] = useState([]);
 
   useEffect(() => {
     const apiKey = '10594f76';
@@ -45,17 +44,14 @@ function App() {
         })
       );
       setDataToDisplay(neededMovieData);
-      // console.log(neededMovieData);
     }
     getDetailedFilmInfo();
   }, []);
 
-  console.log(dataToDisplay);
-
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home dataToDisplay={dataToDisplay} />} />
         <Route path="watchList" element={<WatchList />} />
       </Routes>
     </>
