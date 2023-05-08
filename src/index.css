@@ -95,6 +95,7 @@ form button {
   font-family: inherit;
   border-radius: 0 6px 6px 0;
   border: 1px solid #d1d5db;
+  cursor: pointer;
 }
 form input {
   width: 100%;

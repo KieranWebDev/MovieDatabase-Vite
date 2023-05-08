@@ -5,6 +5,7 @@ export default function WatchList({ watchList, setWatchList }) {
   return (
     <div className="app-container">
       <NavBar linkTo="/" linkText="Search" />
+      {watchList.length === 0 && <h1>Your watchlist is empty</h1>}
       <MovieList
         dataToDisplay={watchList}
         setWatchList={setWatchList}
